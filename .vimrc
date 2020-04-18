@@ -15,6 +15,7 @@ set visualbell              " Flash the screen instead of beeping
 set t_vb=                   " Disable screen flashing by remapping its terminal code.
 set confirm                 " Prompt to save changes instead of erroring out.
 set hidden                  " Hide rather than close buffers with unsaved changes.
+set backspace=indent,eol,start "Allow backspace in insert mode:
 
 " Indentation settings
 set tabstop=4       " Visual width of the tab character.
