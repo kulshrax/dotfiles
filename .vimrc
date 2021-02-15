@@ -16,6 +16,8 @@ set t_vb=                   " Disable screen flashing by remapping its terminal 
 set confirm                 " Prompt to save changes instead of erroring out.
 set hidden                  " Hide rather than close buffers with unsaved changes.
 set backspace=indent,eol,start "Allow backspace in insert mode:
+set colorcolumn=80 " Draw line at 80 characters.
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey "Set highlight color to grey.
 
 " Indentation settings
 set tabstop=4       " Visual width of the tab character.
@@ -33,3 +35,21 @@ set hlsearch    " Highlight search matches.
 
 " Make <Ctrl-L> (clear screen) also turn off search highlighting.
 :nnoremap <C-l> :nohl<CR><C-l>
+
+" Rust plugin settings.
+let g:rustfmt_autosave = 1 " Auto-format Rust files on save.
+
+" Load plugins via vim-plug.
+call plug#begin('~/.local/share/nvim/site/plugged')
+
+" Rust language support.
+Plug 'rust-lang/rust.vim'
+
+" Fuzzy file search.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Directory tree explorer.
+Plug 'preservim/nerdtree'
+
+call plug#end()
