@@ -76,7 +76,7 @@ let g:rustfmt_autosave = 1 " Auto-format Rust files on save.
 
 " Key bindings for NERDTree.
 nmap <leader>t :NERDTreeToggle<cr> <c-w><c-p>
-nmap <leader>r :NERDTreeFind<cr>
+nmap <leader>r :NERDTreeFind<cr> <c-w><c-p>
 
 " Start NERDTree and put the cursor back in the other window.
 " autocmd VimEnter * NERDTree | wincmd p
