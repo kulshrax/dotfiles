@@ -1,0 +1,9 @@
+# Alias for managing dotfiles.
+#
+# Initial setup:
+#   git clone --bare https://github.com/kulshrax/dotfiles ~/.dotfiles
+#   source "$HOME/.dotfiles.rc"
+#   dotfiles config --local status.showUntrackedFiles no
+#
+# More info: https://www.atlassian.com/git/tutorials/dotfiles
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
