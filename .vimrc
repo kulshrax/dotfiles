@@ -71,8 +71,8 @@ let g:rustfmt_autosave = 1 " Auto-format Rust files on save.
 
 " Key bindings for fzf.
 " :nnoremap <c-p> :Files<cr>
-:nmap <leader>f :Files<cr>
-:nmap <leader>b :Buffers<cr>
+:nmap go :Files<cr>
+:nmap gb :Buffers<cr>
 
 " Key bindings for NERDTree.
 nmap <leader>t :NERDTreeToggle<cr> <c-w><c-p>
@@ -90,4 +90,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 &&
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' &&
     \ bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() |
     \ buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+
+set rtp^="/Users/kulshrax/.opam/default/share/ocp-indent/vim"
 
