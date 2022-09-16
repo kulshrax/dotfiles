@@ -39,8 +39,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Use Monokai color scheme from https://github.com/crusoexia/vim-monokai
 colorscheme monokai
 
-" Set leader key to ','.
-let mapleader = ","
+" Remap default leader key.
+let mapleader = "g"
 
 " Make <Ctrl-L> (clear screen) also turn off search highlighting.
 nnoremap <C-l> :nohl<CR><C-l>
@@ -74,8 +74,9 @@ let g:rustfmt_autosave = 1 " Auto-format Rust files on save.
 
 " Key bindings for fzf.
 " :nnoremap <c-p> :Files<cr>
-nmap go :Files<cr>
-nmap gb :Buffers<cr>
+nmap <leader>o :Files<cr>
+nmap <leader>b :Buffers<cr>
+nmap <leader>s :Rg<cr>
 
 " Key bindings for fugitive.
 nmap <leader>g :Git blame<cr>
