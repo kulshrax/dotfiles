@@ -43,19 +43,22 @@ colorscheme monokai
 let mapleader = ","
 
 " Make <Ctrl-L> (clear screen) also turn off search highlighting.
-:nnoremap <C-l> :nohl<CR><C-l>
+nnoremap <C-l> :nohl<CR><C-l>
 
 " Remap <Ctrl-\> to <Esc>. This is useful when using a Kinesis Advantage
 " keyboard, which has '\' in the spot where '[' is located on a standard US
 " keyboard (namely, to the immediate right of 'p'). This means that the muscle
 " memory for <Ctrl-[> on a regular keyboard can be used on a Kinesis Advantage.
-:inoremap <C-BSlash> <Esc>
+inoremap <C-BSlash> <Esc>
 
 " Load plugins using vim-plug.
 call plug#begin('~/.local/share/nvim/site/plugged')
 
 " Rust language support.
 Plug 'rust-lang/rust.vim'
+
+" Git integration.
+Plug 'tpope/vim-fugitive'
 
 " Fuzzy file search.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -71,8 +74,11 @@ let g:rustfmt_autosave = 1 " Auto-format Rust files on save.
 
 " Key bindings for fzf.
 " :nnoremap <c-p> :Files<cr>
-:nmap go :Files<cr>
-:nmap gb :Buffers<cr>
+nmap go :Files<cr>
+nmap gb :Buffers<cr>
+
+" Key bindings for fugitive.
+nmap <leader>g :Git blame<cr>
 
 " Key bindings for NERDTree.
 nmap <leader>t :NERDTreeToggle<cr> <c-w><c-p>
