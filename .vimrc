@@ -40,7 +40,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 colorscheme monokai
 
 " Remap default leader key.
-let mapleader = "g"
+let mapleader = ","
 
 " Make <Ctrl-L> (clear screen) also turn off search highlighting.
 nnoremap <C-l> :nohl<CR><C-l>
@@ -57,6 +57,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 " Rust language support.
 Plug 'rust-lang/rust.vim'
 
+" Code autocompletion.
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
 " Git integration.
 Plug 'tpope/vim-fugitive'
 
@@ -72,11 +75,13 @@ call plug#end()
 " Rust plugin settings.
 let g:rustfmt_autosave = 1 " Auto-format Rust files on save.
 
+" Remap :W to :w (common typo).
+:command W w
+
 " Key bindings for fzf.
-" :nnoremap <c-p> :Files<cr>
-nmap <leader>o :Files<cr>
-nmap <leader>b :Buffers<cr>
-nmap <leader>s :Rg<cr>
+nmap go :Files<cr>
+nmap gb :Buffers<cr>
+nmap gs :Rg<cr>
 
 " Key bindings for fugitive.
 nmap <leader>g :Git blame<cr>
@@ -98,6 +103,5 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' &&
     \ bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() |
     \ buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-
+" OCaml indentation support.
 set rtp^="/Users/kulshrax/.opam/default/share/ocp-indent/vim"
-
