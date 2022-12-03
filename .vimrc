@@ -40,7 +40,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 colorscheme monokai
 
 " Remap default leader key.
-let mapleader = ","
+let mapleader = ' '
 
 " Make <Ctrl-L> (clear screen) also turn off search highlighting.
 nnoremap <C-l> :nohl<CR><C-l>
@@ -63,12 +63,21 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Git integration.
 Plug 'tpope/vim-fugitive'
 
+" Support for commenting out blocks of code.
+Plug 'tpope/vim-commentary'
+
+" More functionality for working with delimiters like parens and braces.
+Plug 'tpope/vim-surround'
+
 " Fuzzy file search.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Directory tree explorer.
 Plug 'preservim/nerdtree'
+
+" Fancy status and tab lines.
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -87,8 +96,8 @@ nmap gs :Rg<cr>
 nmap <leader>g :Git blame<cr>
 
 " Key bindings for NERDTree.
-nmap <leader>t :NERDTreeToggle<cr> <c-w><c-p>
-nmap <leader>r :NERDTreeFind<cr> <c-w><c-p>
+nmap <leader>t :NERDTreeToggle<cr>
+nmap <leader>r :NERDTreeFind<cr>
 
 " Start NERDTree and put the cursor back in the other window.
 " autocmd VimEnter * NERDTree | wincmd p
@@ -102,6 +111,12 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 &&
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' &&
     \ bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() |
     \ buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Enable tab line for airline plugin.
+let g:airline#extensions#tabline#enabled = 1
+
+" Make airline plugin use powerline font glyphs.
+let g:airline_powerline_fonts = 1
 
 " OCaml indentation support.
 set rtp^="/Users/kulshrax/.opam/default/share/ocp-indent/vim"
